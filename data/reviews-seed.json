@@ -1,0 +1,302 @@
+[
+  {
+    "course_code": "COMP3506",
+    "rating": 5,
+    "difficulty": 4,
+    "workload_hours": 15,
+    "semester": "S2 2025",
+    "text": "Challenging but very rewarding course. The assignments really push you to think about efficiency and algorithm design. Professor's lectures were clear and well-structured. Highly recommend for anyone serious about software engineering.",
+    "author": "Alex T.",
+    "created_at": "2025-11-15T10:30:00Z"
+  },
+  {
+    "course_code": "COMP3506",
+    "rating": 4,
+    "difficulty": 5,
+    "workload_hours": 20,
+    "semester": "S2 2025",
+    "text": "Tough course, especially the later assignments on graph algorithms and dynamic programming. Start early on the assignments or you'll regret it. The final exam was fair though.",
+    "author": "Jordan K.",
+    "created_at": "2025-12-02T14:15:00Z"
+  },
+  {
+    "course_code": "COMP3506",
+    "rating": 3,
+    "difficulty": 4,
+    "workload_hours": 18,
+    "semester": "S2 2025",
+    "text": "Content is interesting but the pace is relentless. Felt like every week introduced something completely new. Tutors were helpful but the marking on assignments could be more transparent.",
+    "author": "Anonymous",
+    "created_at": "2025-11-28T09:00:00Z"
+  },
+  {
+    "course_code": "FINM3403",
+    "rating": 4,
+    "difficulty": 3,
+    "workload_hours": 12,
+    "semester": "S1 2025",
+    "text": "Great introduction to corporate finance concepts. The lecturer explains complex valuation models in a way that's easy to follow. Group project was a good practical experience.",
+    "author": "Michelle L.",
+    "created_at": "2025-06-20T11:45:00Z"
+  },
+  {
+    "course_code": "FINM3403",
+    "rating": 5,
+    "difficulty": 3,
+    "workload_hours": 10,
+    "semester": "S1 2025",
+    "text": "One of the best finance courses at UQ. The real-world case studies made the theory much more engaging. Exam was straightforward if you keep up with the weekly content.",
+    "author": "David W.",
+    "created_at": "2025-07-01T16:30:00Z"
+  },
+  {
+    "course_code": "FINM3403",
+    "rating": 2,
+    "difficulty": 4,
+    "workload_hours": 14,
+    "semester": "S2 2025",
+    "text": "Found the course disorganised in S2. Lecture slides had errors and the assessment criteria were vague. Content itself is fine but delivery needs improvement.",
+    "author": "Anonymous",
+    "created_at": "2025-11-10T08:20:00Z"
+  },
+  {
+    "course_code": "MATH1051",
+    "rating": 4,
+    "difficulty": 2,
+    "workload_hours": 8,
+    "semester": "S1 2025",
+    "text": "Solid first-year calculus course. If you did well in high school maths, the first half is mostly revision. It picks up in the second half with integration techniques. Tutorials are very helpful.",
+    "author": "Sarah P.",
+    "created_at": "2025-06-15T13:00:00Z"
+  },
+  {
+    "course_code": "MATH1051",
+    "rating": 3,
+    "difficulty": 3,
+    "workload_hours": 10,
+    "semester": "S1 2025",
+    "text": "Decent course but the weekly online quizzes felt tedious. The lecture recordings were good quality though. Make sure to attend tutorials, they clarify a lot.",
+    "author": "Tom H.",
+    "created_at": "2025-06-28T10:00:00Z"
+  },
+  {
+    "course_code": "MATH1051",
+    "rating": 5,
+    "difficulty": 2,
+    "workload_hours": 6,
+    "semester": "S2 2025",
+    "text": "Loved this course! The teaching team was fantastic and always available during consultation hours. Great foundation for anyone going into STEM.",
+    "author": "Priya M.",
+    "created_at": "2025-11-22T15:45:00Z"
+  },
+  {
+    "course_code": "CSSE2002",
+    "rating": 4,
+    "difficulty": 3,
+    "workload_hours": 14,
+    "semester": "S1 2025",
+    "text": "Really well-structured programming course. Teaches you proper software design principles and testing. The assignments build on each other nicely. Java gets easier once you get into the rhythm.",
+    "author": "Chris B.",
+    "created_at": "2025-06-25T09:30:00Z"
+  },
+  {
+    "course_code": "CSSE2002",
+    "rating": 5,
+    "difficulty": 3,
+    "workload_hours": 16,
+    "semester": "S1 2025",
+    "text": "Best course I've taken at UQ so far. The emphasis on code quality and design patterns has genuinely made me a better programmer. Start assignments early, they take longer than you think.",
+    "author": "Emma R.",
+    "created_at": "2025-07-03T12:00:00Z"
+  },
+  {
+    "course_code": "CSSE2002",
+    "rating": 3,
+    "difficulty": 4,
+    "workload_hours": 18,
+    "semester": "S2 2025",
+    "text": "The jump from first-year programming to this was quite steep. Assignments are heavy but you learn a lot. Wish there were more worked examples in lectures.",
+    "author": "Anonymous",
+    "created_at": "2025-12-01T07:45:00Z"
+  },
+  {
+    "course_code": "DATA7001",
+    "rating": 4,
+    "difficulty": 3,
+    "workload_hours": 12,
+    "semester": "S2 2025",
+    "text": "Good postgraduate intro to data science. Covers Python, pandas, basic ML concepts. The project component was the highlight, working with a real dataset. Would have liked more depth on deep learning.",
+    "author": "Liam S.",
+    "created_at": "2025-11-18T14:00:00Z"
+  },
+  {
+    "course_code": "DATA7001",
+    "rating": 5,
+    "difficulty": 2,
+    "workload_hours": 10,
+    "semester": "S2 2025",
+    "text": "Excellent course for getting started in data science. The lecturer was engaging and the Jupyter notebook exercises were practical and relevant. Highly recommend.",
+    "author": "Yuki T.",
+    "created_at": "2025-12-05T11:30:00Z"
+  },
+  {
+    "course_code": "DATA7001",
+    "rating": 3,
+    "difficulty": 3,
+    "workload_hours": 11,
+    "semester": "S2 2025",
+    "text": "Covers a lot of ground but sometimes felt rushed. Good if you already have some programming experience. The group project coordination was tricky with different skill levels.",
+    "author": "Anonymous",
+    "created_at": "2025-11-25T16:00:00Z"
+  },
+  {
+    "course_code": "STAT2004",
+    "rating": 4,
+    "difficulty": 3,
+    "workload_hours": 9,
+    "semester": "S1 2025",
+    "text": "Well-taught statistics course. The R programming component was a nice addition. Exam questions were very similar to practice problems, so do those thoroughly.",
+    "author": "Nina G.",
+    "created_at": "2025-06-22T10:15:00Z"
+  },
+  {
+    "course_code": "STAT2004",
+    "rating": 2,
+    "difficulty": 4,
+    "workload_hours": 12,
+    "semester": "S1 2025",
+    "text": "Struggled with this one. The jump from descriptive stats to inference was abrupt. Needed a lot of external resources to supplement the lectures. Tutorials helped somewhat.",
+    "author": "Anonymous",
+    "created_at": "2025-07-05T08:00:00Z"
+  },
+  {
+    "course_code": "STAT2004",
+    "rating": 5,
+    "difficulty": 2,
+    "workload_hours": 7,
+    "semester": "S2 2025",
+    "text": "If you liked STAT1201, you'll enjoy this. Builds naturally on prior knowledge. The data analysis assignments were genuinely interesting and applicable.",
+    "author": "Rachel W.",
+    "created_at": "2025-11-30T13:20:00Z"
+  },
+  {
+    "course_code": "ECON1010",
+    "rating": 4,
+    "difficulty": 2,
+    "workload_hours": 6,
+    "semester": "S1 2025",
+    "text": "Great introductory economics course. Covers micro and macro at a manageable pace. The weekly quizzes keep you on track. Good choice as an elective even if you're not a BEL student.",
+    "author": "Oliver N.",
+    "created_at": "2025-06-18T11:00:00Z"
+  },
+  {
+    "course_code": "ECON1010",
+    "rating": 3,
+    "difficulty": 2,
+    "workload_hours": 5,
+    "semester": "S1 2025",
+    "text": "Fairly standard intro econ. Nothing groundbreaking but it covers the basics well. The textbook is expensive but necessary for the problem sets.",
+    "author": "Anonymous",
+    "created_at": "2025-06-30T15:30:00Z"
+  },
+  {
+    "course_code": "ECON1010",
+    "rating": 5,
+    "difficulty": 1,
+    "workload_hours": 4,
+    "semester": "S2 2025",
+    "text": "Easiest course in my semester and still interesting! The lecturer made supply and demand diagrams actually fun. Perfect GPA booster if you have any background in economics.",
+    "author": "Jasmine C.",
+    "created_at": "2025-11-20T09:45:00Z"
+  },
+  {
+    "course_code": "PSYC1020",
+    "rating": 4,
+    "difficulty": 2,
+    "workload_hours": 7,
+    "semester": "S1 2025",
+    "text": "Fascinating introduction to psychology. The topics on cognitive biases and memory were particularly interesting. Multiple choice exam format makes it manageable if you stay on top of readings.",
+    "author": "Kate D.",
+    "created_at": "2025-06-24T12:30:00Z"
+  },
+  {
+    "course_code": "PSYC1020",
+    "rating": 3,
+    "difficulty": 2,
+    "workload_hours": 8,
+    "semester": "S2 2025",
+    "text": "Interesting content but there's a LOT of reading. The research participation requirement is a bit annoying but you learn about the research process. Exam is content-heavy.",
+    "author": "Anonymous",
+    "created_at": "2025-11-12T14:45:00Z"
+  },
+  {
+    "course_code": "BIOL1020",
+    "rating": 4,
+    "difficulty": 2,
+    "workload_hours": 8,
+    "semester": "S1 2025",
+    "text": "Enjoyable biology course with well-organised practicals. The ecology field trip was a highlight. Content is manageable if you attended lectures and reviewed your notes weekly.",
+    "author": "Sam J.",
+    "created_at": "2025-06-27T10:00:00Z"
+  },
+  {
+    "course_code": "BIOL1020",
+    "rating": 5,
+    "difficulty": 1,
+    "workload_hours": 6,
+    "semester": "S2 2025",
+    "text": "Loved the hands-on lab component. Great teaching staff who are passionate about biology. The online modules before each lecture helped a lot with understanding the material.",
+    "author": "Hannah F.",
+    "created_at": "2025-12-03T16:15:00Z"
+  },
+  {
+    "course_code": "BIOL1020",
+    "rating": 3,
+    "difficulty": 3,
+    "workload_hours": 10,
+    "semester": "S1 2025",
+    "text": "Good course overall but the amount of content to memorise for the final was overwhelming. Would recommend making flashcards from the start. Practicals were well done.",
+    "author": "Anonymous",
+    "created_at": "2025-07-02T08:30:00Z"
+  },
+  {
+    "course_code": "LAWS1100",
+    "rating": 4,
+    "difficulty": 3,
+    "workload_hours": 12,
+    "semester": "S1 2025",
+    "text": "Excellent introduction to the Australian legal system. Case analysis skills you learn here are invaluable. The mooting exercise was nerve-wracking but a great experience.",
+    "author": "Daniel M.",
+    "created_at": "2025-06-21T09:00:00Z"
+  },
+  {
+    "course_code": "LAWS1100",
+    "rating": 3,
+    "difficulty": 3,
+    "workload_hours": 14,
+    "semester": "S2 2025",
+    "text": "Heavy reading load every week. If you fall behind, it's hard to catch up. The content is interesting though and the lecturers are engaging. Assessment is mostly essay-based.",
+    "author": "Anonymous",
+    "created_at": "2025-11-08T13:00:00Z"
+  },
+  {
+    "course_code": "LAWS1100",
+    "rating": 5,
+    "difficulty": 2,
+    "workload_hours": 10,
+    "semester": "S1 2025",
+    "text": "Changed my perspective on how law works in Australia. The tutorials foster great discussions. Even if you're not doing a law degree, this course teaches critical thinking that's useful everywhere.",
+    "author": "Sophie A.",
+    "created_at": "2025-07-04T11:30:00Z"
+  },
+  {
+    "course_code": "COMP3506",
+    "rating": 4,
+    "difficulty": 4,
+    "workload_hours": 16,
+    "semester": "S2 2025",
+    "text": "Data structures portion was excellent. The second half covering advanced algorithms was harder but manageable with consistent study. Great preparation for technical interviews.",
+    "author": "Ryan Z.",
+    "created_at": "2025-12-08T10:00:00Z"
+  }
+]

@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>UQ Course Select Helper | Course Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="coolicons.css">
+    <link rel="stylesheet" href="css/shared.css?v=20260527-5">
+    <link rel="stylesheet" href="css/courses.css?v=20260527-5">
+</head>
+
+<body>
+    <div class="page-courses">
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-lockup" aria-label="UQ Course Select Helper home">
+                        <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper">
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <i class="ci-House_01"></i>
+                            <span data-i18n="nav_home">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html" class="nav-active">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="nav_courses">Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="timetable.html">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="nav_timetable">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reviews.html">
+                            <i class="ci-Users"></i>
+                            <span data-i18n="nav_reviews">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#help">
+                            <i class="ci-Circle_Help"></i>
+                            <span data-i18n="nav_help">Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-wrapper">
+                        <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangPopover()">
+                            <i class="ci-Globe"></i>
+                        </button>
+                        <div class="lang-popover" id="langPopover">
+                            <div class="lang-popover-title">Language</div>
+                            <div class="lang-popover-divider"></div>
+                            <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">English</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                            <button class="lang-option" data-lang="zh" onclick="switchLang('zh')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">Chinese</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="nav-menu-btn" aria-label="Menu">
+                        <i class="ci-Hamburger_MD"></i>
+                    </button>
+                    <a href="timetable.html" class="nav-cta" aria-label="View Timetable">
+                        <i class="ci-Bookmark"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="catalog-header">
+                <h1 class="catalog-title" data-i18n="catalog_title">Course Catalog</h1>
+                <p class="catalog-subtitle" data-i18n="catalog_subtitle">Browse the 149-course demo dataset, then verify details on official UQ course pages.</p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="catalog-search-wrapper">
+                <div class="catalog-search-bar">
+                    <i class="ci-Search catalog-search-icon"></i>
+                    <input type="text" id="catalogSearchInput" placeholder="Search by course code, title, or keyword..."
+                        data-i18n-ph="catalog_search_ph">
+                    <button class="catalog-search-btn" id="catalogSearchBtn" data-i18n="search_btn">Search</button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="catalog-filters">
+                <div class="filter-group">
+                    <select id="filterFaculty" class="filter-select">
+                        <option value="">All Faculties</option>
+                        <option value="BEL">Business, Economics & Law</option>
+                        <option value="EAIT">Engineering & IT</option>
+                        <option value="Health, Medicine and Behavioural Sciences">Health, Medicine & Behavioural
+                            Sciences</option>
+                        <option value="Humanities, Arts and Social Sciences">Humanities, Arts & Social Sciences</option>
+                        <option value="Science">Science</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="filterLevel" class="filter-select">
+                        <option value="">All Levels</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="postgraduate">Postgraduate</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="filterSemester" class="filter-select">
+                        <option value="">All Semesters</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="summer">Summer</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="filterUnits" class="filter-select">
+                        <option value="">All Units</option>
+                        <option value="2">2 Units</option>
+                        <option value="4">4 Units</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="sortSelect" class="filter-select">
+                        <option value="relevance">Sort: Relevance</option>
+                        <option value="code-asc">Sort: Code A-Z</option>
+                        <option value="title-asc">Sort: Title A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Count -->
+            <div class="catalog-results-info">
+                <span class="results-count" id="resultsCount" data-i18n="results_loading">Loading courses...</span>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="catalog-loading" id="catalogLoading">
+                <div class="spinner"></div>
+                <span data-i18n="loading_text">Loading courses...</span>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="catalog-grid" id="catalogGrid"></div>
+
+            <!-- Empty State -->
+            <div class="catalog-empty" id="catalogEmpty" style="display:none;">
+                <i class="ci-Search"></i>
+                <h3 data-i18n="empty_title">No courses found</h3>
+                <p data-i18n="empty_text">Try adjusting your search or filters to find what you're looking for.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Full Footer -->
+    <footer id="help" class="footer student-footer">
+        <div class="footer-hero">
+            <div class="footer-brand-block">
+                <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper" class="footer-brand-logo">
+                <p>Independent COMP1100 student MVP. This prototype helps demonstrate course-planning ideas, interview-driven learning and design iteration.</p>
+            </div>
+            <div class="footer-proof-points">
+                <span>Student prototype</span>
+                <span>Not an official UQ service</span>
+                <span>Verify details with UQ</span>
+            </div>
+        </div>
+
+        <div class="footer-columns footer-prototype-columns">
+            <div class="footer-col">
+                <h4>Working with UQ</h4>
+                <ul>
+                    <li><a href="https://about.uq.edu.au/careers" target="_blank" rel="noopener noreferrer">Careers and job search</a></li>
+                    <li><a href="https://about.uq.edu.au/strategy-values/strategic-plan" target="_blank" rel="noopener noreferrer">Strategic Plan</a></li>
+                    <li><a href="https://about.uq.edu.au/staff-intranet" target="_blank" rel="noopener noreferrer">Staff Intranet</a></li>
+                    <li><a href="https://my.uq.edu.au/information-and-services/information-technology/student-staff-it-support" target="_blank" rel="noopener noreferrer">IT support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Current students</h4>
+                <ul>
+                    <li><a href="https://my.uq.edu.au/" target="_blank" rel="noopener noreferrer">my.UQ</a></li>
+                    <li><a href="https://programs-courses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Programs and courses</a></li>
+                    <li><a href="https://about.uq.edu.au/academic-calendar" target="_blank" rel="noopener noreferrer">Academic calendar</a></li>
+                    <li><a href="https://my.uq.edu.au/student-support" target="_blank" rel="noopener noreferrer">Student support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Library</h4>
+                <ul>
+                    <li><a href="https://library.uq.edu.au/" target="_blank" rel="noopener noreferrer">Library</a></li>
+                    <li><a href="https://web.library.uq.edu.au/study-and-learning-support" target="_blank" rel="noopener noreferrer">Study and learning support</a></li>
+                    <li><a href="https://web.library.uq.edu.au/research-and-publish" target="_blank" rel="noopener noreferrer">Research and publish</a></li>
+                    <li><a href="https://web.library.uq.edu.au/visit" target="_blank" rel="noopener noreferrer">Visit</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact UQ</h4>
+                <ul>
+                    <li><a href="https://contacts.uq.edu.au/contacts" target="_blank" rel="noopener noreferrer">Contact UQ</a></li>
+                    <li><a href="https://www.uq.edu.au/complaints-appeals" target="_blank" rel="noopener noreferrer">Make a complaint</a></li>
+                    <li><a href="https://about.uq.edu.au/faculties-schools-centres-and-institutes" target="_blank" rel="noopener noreferrer">Faculties, schools, institutes and centres</a></li>
+                    <li><a href="https://campuses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Campuses, maps and transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Prototype notes</h4>
+                <ul>
+                    <li>Reviews are stored locally in this browser.</li>
+                    <li>No analytics or server upload are added.</li>
+                    <li>Do not enter sensitive personal information.</li>
+                    <li>Course data is for demonstration and must be checked against official UQ pages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> UQ Course Select Helper is an independent student prototype. It is not affiliated with, endorsed by, or operated by The University of Queensland. UQ names and course references are used only to describe the student problem space and demonstration dataset.
+        </div>
+    </footer>
+    <script src="js/i18n.js?v=20260527-5"></script>
+    <script src="js/shared.js?v=20260527-5"></script>
+    <script src="js/courses.js?v=20260527-5"></script>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UQ Course Select Helper | Timetable Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="coolicons.css">
+    <link rel="stylesheet" href="css/shared.css?v=20260527-5">
+    <link rel="stylesheet" href="css/timetable.css?v=20260527-5">
+</head>
+
+<body>
+    <div class="page-timetable">
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-lockup" aria-label="UQ Course Select Helper home">
+                        <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper">
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <i class="ci-House_01"></i>
+                            <span data-i18n="nav_home">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="nav_courses">Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="timetable.html" class="nav-active">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="nav_timetable">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reviews.html">
+                            <i class="ci-Users"></i>
+                            <span data-i18n="nav_reviews">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#help">
+                            <i class="ci-Circle_Help"></i>
+                            <span data-i18n="nav_help">Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-wrapper">
+                        <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangPopover()">
+                            <i class="ci-Globe"></i>
+                        </button>
+                        <div class="lang-popover" id="langPopover">
+                            <div class="lang-popover-title">Language</div>
+                            <div class="lang-popover-divider"></div>
+                            <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">English</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                            <button class="lang-option" data-lang="zh" onclick="switchLang('zh')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">Chinese</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="nav-menu-btn" aria-label="Menu">
+                        <i class="ci-Hamburger_MD"></i>
+                    </button>
+                    <a href="#" class="nav-cta" aria-label="Get Started">
+                        <i class="ci-Bookmark"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Toolbar -->
+            <div class="tt-toolbar">
+                <div class="tt-toolbar-left">
+                    <h1 class="tt-title" data-i18n="tt_title">My Timetable</h1>
+                    <div class="tt-semester-select-wrapper">
+                        <select id="semesterSelect" class="tt-semester-select">
+                            <option value="sem1-2026">Semester 1, 2026</option>
+                            <option value="sem2-2026">Semester 2, 2026</option>
+                        </select>
+                    </div>
+                    <span class="tt-units-badge" id="unitsBadge">0 Units</span>
+                </div>
+                <div class="tt-toolbar-right">
+                    <button class="tt-btn tt-btn-secondary" id="clearAllBtn">
+                        <i class="ci-Trash_Full"></i>
+                        <span data-i18n="tt_clear">Clear All</span>
+                    </button>
+                    <button class="tt-btn tt-btn-primary" id="exportBtn">
+                        <i class="ci-Upload"></i>
+                        <span data-i18n="tt_export">Export</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two-panel layout -->
+            <div class="tt-layout">
+
+                <!-- Left: Weekly grid -->
+                <div class="tt-grid-panel">
+                    <div class="tt-grid-card">
+                        <div class="tt-grid" id="timetableGrid">
+                            <!-- Corner cell -->
+                            <div class="tt-grid-corner"></div>
+                            <!-- Day headers -->
+                            <div class="tt-day-header">Mon</div>
+                            <div class="tt-day-header">Tue</div>
+                            <div class="tt-day-header">Wed</div>
+                            <div class="tt-day-header">Thu</div>
+                            <div class="tt-day-header">Fri</div>
+                            <!-- Time rows and cells generated by JS -->
+                        </div>
+                        <!-- Course blocks overlaid on grid -->
+                        <div class="tt-blocks-layer" id="blocksLayer"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Course Bank -->
+                <div class="tt-bank-panel">
+                    <div class="tt-bank-card">
+                        <div class="tt-bank-header">
+                            <h2 data-i18n="tt_my_courses">My Courses</h2>
+                            <span class="tt-bank-count" id="bankCount">0</span>
+                        </div>
+                        <div class="tt-bank-list" id="bankList">
+                            <!-- Course items rendered by JS -->
+                        </div>
+                        <div class="tt-bank-empty" id="bankEmpty">
+                            <i class="ci-Book_Open"></i>
+                            <p data-i18n="tt_empty_bank">No courses added yet. Browse the catalog to add courses.</p>
+                        </div>
+                        <a href="courses.html" class="tt-add-course-btn" id="addCourseBtn">
+                            <i class="ci-Plus"></i>
+                            <span data-i18n="tt_add_course">Add Course</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="tt-toast" id="toast"></div>
+
+    <!-- Full Footer -->
+    <footer id="help" class="footer student-footer">
+        <div class="footer-hero">
+            <div class="footer-brand-block">
+                <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper" class="footer-brand-logo">
+                <p>Independent COMP1100 student MVP. This prototype helps demonstrate course-planning ideas, interview-driven learning and design iteration.</p>
+            </div>
+            <div class="footer-proof-points">
+                <span>Student prototype</span>
+                <span>Not an official UQ service</span>
+                <span>Verify details with UQ</span>
+            </div>
+        </div>
+
+        <div class="footer-columns footer-prototype-columns">
+            <div class="footer-col">
+                <h4>Working with UQ</h4>
+                <ul>
+                    <li><a href="https://about.uq.edu.au/careers" target="_blank" rel="noopener noreferrer">Careers and job search</a></li>
+                    <li><a href="https://about.uq.edu.au/strategy-values/strategic-plan" target="_blank" rel="noopener noreferrer">Strategic Plan</a></li>
+                    <li><a href="https://about.uq.edu.au/staff-intranet" target="_blank" rel="noopener noreferrer">Staff Intranet</a></li>
+                    <li><a href="https://my.uq.edu.au/information-and-services/information-technology/student-staff-it-support" target="_blank" rel="noopener noreferrer">IT support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Current students</h4>
+                <ul>
+                    <li><a href="https://my.uq.edu.au/" target="_blank" rel="noopener noreferrer">my.UQ</a></li>
+                    <li><a href="https://programs-courses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Programs and courses</a></li>
+                    <li><a href="https://about.uq.edu.au/academic-calendar" target="_blank" rel="noopener noreferrer">Academic calendar</a></li>
+                    <li><a href="https://my.uq.edu.au/student-support" target="_blank" rel="noopener noreferrer">Student support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Library</h4>
+                <ul>
+                    <li><a href="https://library.uq.edu.au/" target="_blank" rel="noopener noreferrer">Library</a></li>
+                    <li><a href="https://web.library.uq.edu.au/study-and-learning-support" target="_blank" rel="noopener noreferrer">Study and learning support</a></li>
+                    <li><a href="https://web.library.uq.edu.au/research-and-publish" target="_blank" rel="noopener noreferrer">Research and publish</a></li>
+                    <li><a href="https://web.library.uq.edu.au/visit" target="_blank" rel="noopener noreferrer">Visit</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact UQ</h4>
+                <ul>
+                    <li><a href="https://contacts.uq.edu.au/contacts" target="_blank" rel="noopener noreferrer">Contact UQ</a></li>
+                    <li><a href="https://www.uq.edu.au/complaints-appeals" target="_blank" rel="noopener noreferrer">Make a complaint</a></li>
+                    <li><a href="https://about.uq.edu.au/faculties-schools-centres-and-institutes" target="_blank" rel="noopener noreferrer">Faculties, schools, institutes and centres</a></li>
+                    <li><a href="https://campuses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Campuses, maps and transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Prototype notes</h4>
+                <ul>
+                    <li>Reviews are stored locally in this browser.</li>
+                    <li>No analytics or server upload are added.</li>
+                    <li>Do not enter sensitive personal information.</li>
+                    <li>Course data is for demonstration and must be checked against official UQ pages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> UQ Course Select Helper is an independent student prototype. It is not affiliated with, endorsed by, or operated by The University of Queensland. UQ names and course references are used only to describe the student problem space and demonstration dataset.
+        </div>
+    </footer>
+
+    <script src="js/i18n.js?v=20260527-5"></script>
+    <script src="js/shared.js?v=20260527-5"></script>
+    <script src="js/timetable.js?v=20260527-5"></script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UQ Course Select Helper | Course Reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="coolicons.css">
+    <link rel="stylesheet" href="css/shared.css?v=20260527-5">
+    <link rel="stylesheet" href="css/reviews.css?v=20260527-5">
+</head>
+
+<body>
+    <div class="page-reviews">
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-lockup" aria-label="UQ Course Select Helper home">
+                        <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper">
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <i class="ci-House_01"></i>
+                            <span data-i18n="nav_home">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="nav_courses">Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="timetable.html">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="nav_timetable">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reviews.html" class="nav-active">
+                            <i class="ci-Users"></i>
+                            <span data-i18n="nav_reviews">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#help">
+                            <i class="ci-Circle_Help"></i>
+                            <span data-i18n="nav_help">Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-wrapper">
+                        <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangPopover()">
+                            <i class="ci-Globe"></i>
+                        </button>
+                        <div class="lang-popover" id="langPopover">
+                            <div class="lang-popover-title">Language</div>
+                            <div class="lang-popover-divider"></div>
+                            <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">English</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                            <button class="lang-option" data-lang="zh" onclick="switchLang('zh')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">Chinese</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="nav-menu-btn" aria-label="Menu">
+                        <i class="ci-Hamburger_MD"></i>
+                    </button>
+                    <a href="timetable.html" class="nav-cta" aria-label="View Timetable">
+                        <i class="ci-Bookmark"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="reviews-header">
+                <h1 class="reviews-title" data-i18n="reviews_title">Course Reviews</h1>
+                <p class="reviews-subtitle" data-i18n="reviews_subtitle">Explore demo student-style feedback about
+                    workload, difficulty and course fit. New reviews stay in this browser only.</p>
+            </div>
+
+            <div class="review-evidence-grid" aria-label="Review prototype evidence">
+                <div class="review-evidence-card">
+                    <span class="evidence-label">Demo review dataset</span>
+                    <strong id="reviewDatasetCount">--</strong>
+                    <span>seeded examples for testing flows</span>
+                </div>
+                <div class="review-evidence-card">
+                    <span class="evidence-label">Privacy behaviour</span>
+                    <strong>Local only</strong>
+                    <span>new reviews stay in this browser</span>
+                </div>
+                <div class="review-evidence-card">
+                    <span class="evidence-label">Decision support</span>
+                    <strong>Workload + difficulty</strong>
+                    <span>matches interview feedback themes</span>
+                </div>
+            </div>
+
+            <!-- Course Selector -->
+            <div class="course-selector-wrapper">
+                <div class="course-selector">
+                    <i class="ci-Search course-selector-icon"></i>
+                    <input type="text" id="courseSearchInput"
+                        placeholder="Search for a course, for example COMP3506 or Algorithms..." autocomplete="off"
+                        data-i18n-ph="reviews_search_ph">
+                    <div class="course-dropdown" id="courseDropdown"></div>
+                </div>
+                <div class="selected-course-badge" id="selectedCourseBadge" style="display:none;">
+                    <span class="badge-code" id="badgeCode"></span>
+                    <span class="badge-title" id="badgeTitle"></span>
+                    <button class="badge-remove" id="badgeRemove" aria-label="Remove selection">&times;</button>
+                </div>
+                <div class="all-course-picker" id="allCoursePicker">
+                    <div class="all-course-picker-head">
+                        <div>
+                            <span>All courses</span>
+                            <strong id="allCourseCount">Loading courses...</strong>
+                        </div>
+                        <select id="reviewCourseFacultyFilter" class="filter-select" aria-label="Filter course list by faculty">
+                            <option value="">All faculties</option>
+                            <option value="BEL">Business, Economics & Law</option>
+                            <option value="EAIT">Engineering & IT</option>
+                            <option value="Health, Medicine and Behavioural Sciences">Health, Medicine & Behavioural Sciences</option>
+                            <option value="Humanities, Arts and Social Sciences">Humanities, Arts & Social Sciences</option>
+                            <option value="Science">Science</option>
+                        </select>
+                    </div>
+                    <div class="all-course-grid" id="allCourseGrid"></div>
+                </div>
+            </div>
+
+            <!-- Review Summary -->
+            <div class="review-summary-card" id="reviewSummary" style="display:none;">
+                <div class="summary-left">
+                    <div class="summary-avg-rating" id="summaryAvgRating">0.0</div>
+                    <div class="summary-stars" id="summaryStars"></div>
+                    <div class="summary-count" id="summaryCount">0 reviews</div>
+                </div>
+                <div class="summary-center">
+                    <div class="rating-distribution" id="ratingDistribution"></div>
+                </div>
+                <div class="summary-right">
+                    <div class="summary-stat">
+                        <span class="stat-label">Avg. Difficulty</span>
+                        <span class="stat-value" id="summaryDifficulty">--</span>
+                        <span class="stat-badge" id="summaryDiffBadge"></span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-label">Avg. Workload</span>
+                        <span class="stat-value" id="summaryWorkload">--</span>
+                        <span class="stat-unit">hrs/week</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sort + Write Review Toggle -->
+            <div class="reviews-toolbar" id="reviewsToolbar" style="display:none;">
+                <div class="review-filter-row">
+                    <select id="filterRating" class="filter-select" aria-label="Filter by rating">
+                        <option value="" data-i18n="reviews_filter_rating">All ratings</option>
+                        <option value="5">5 stars only</option>
+                        <option value="4">4+ stars</option>
+                        <option value="3">3+ stars</option>
+                    </select>
+                    <select id="filterDifficulty" class="filter-select" aria-label="Filter by difficulty">
+                        <option value="" data-i18n="reviews_filter_difficulty">All difficulties</option>
+                        <option value="1">Easy</option>
+                        <option value="2">Moderate</option>
+                        <option value="3">Hard</option>
+                        <option value="4">Very Hard</option>
+                        <option value="5">Extreme</option>
+                    </select>
+                    <input id="filterKeyword" class="review-keyword-filter" type="search" placeholder="Search review text..."
+                        data-i18n-ph="reviews_filter_keyword_ph" aria-label="Search review text">
+                </div>
+                <div class="sort-group">
+                    <label data-i18n="reviews_sort_label">Sort by:</label>
+                    <select id="sortReviews" class="filter-select">
+                        <option value="recent" data-i18n="reviews_sort_recent">Most Recent</option>
+                        <option value="highest" data-i18n="reviews_sort_highest">Highest Rated</option>
+                        <option value="lowest" data-i18n="reviews_sort_lowest">Lowest Rated</option>
+                        <option value="workload" data-i18n="reviews_sort_workload">Highest Workload</option>
+                    </select>
+                </div>
+                <button class="write-review-toggle" id="writeReviewToggle">
+                    <i class="ci-Edit_Pencil_01"></i>
+                    <span data-i18n="reviews_write">Write a Review</span>
+                </button>
+            </div>
+
+            <!-- Write Review Form -->
+            <div class="review-form-wrapper" id="reviewFormWrapper">
+                <form class="review-form" id="reviewForm">
+                    <h3 class="form-title">Write a Review</h3>
+                    <p class="form-note" data-i18n="reviews_privacy_note">Do not enter sensitive personal information.
+                        This prototype saves your review locally in this browser.</p>
+
+                    <div class="form-row">
+                        <label class="form-label">Overall Rating <span class="required">*</span></label>
+                        <div class="star-picker" id="starPicker">
+                            <span class="star-pick" data-value="1">&#9733;</span>
+                            <span class="star-pick" data-value="2">&#9733;</span>
+                            <span class="star-pick" data-value="3">&#9733;</span>
+                            <span class="star-pick" data-value="4">&#9733;</span>
+                            <span class="star-pick" data-value="5">&#9733;</span>
+                        </div>
+                        <input type="hidden" id="formRating" value="">
+                    </div>
+
+                    <div class="form-row">
+                        <label class="form-label">Difficulty</label>
+                        <div class="difficulty-picker" id="difficultyPicker">
+                            <button type="button" class="diff-btn" data-value="1">1 - Easy</button>
+                            <button type="button" class="diff-btn" data-value="2">2 - Moderate</button>
+                            <button type="button" class="diff-btn" data-value="3">3 - Hard</button>
+                            <button type="button" class="diff-btn" data-value="4">4 - Very Hard</button>
+                            <button type="button" class="diff-btn" data-value="5">5 - Extreme</button>
+                        </div>
+                        <input type="hidden" id="formDifficulty" value="">
+                    </div>
+
+                    <div class="form-row-inline">
+                        <div class="form-row">
+                            <label class="form-label" for="formWorkload">Workload (hrs/week)</label>
+                            <input type="number" id="formWorkload" class="form-input" min="0" max="60"
+                                placeholder="e.g. 10">
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label" for="formSemester">Semester Taken</label>
+                            <select id="formSemester" class="form-input">
+                                <option value="">Select...</option>
+                                <option value="S1 2025">S1 2025</option>
+                                <option value="S2 2025">S2 2025</option>
+                                <option value="S1 2026">S1 2026</option>
+                                <option value="S2 2026">S2 2026</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="form-label" for="formText">Your Review</label>
+                        <textarea id="formText" class="form-textarea" rows="4"
+                            placeholder="Share your experience with this course..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="form-label" for="formAuthor">Display Name</label>
+                        <input type="text" id="formAuthor" class="form-input" placeholder="Anonymous" maxlength="40">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="form-cancel" id="formCancel">Cancel</button>
+                        <button type="submit" class="form-submit">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="reviews-list" id="reviewsList"></div>
+
+            <!-- Empty State -->
+            <div class="reviews-empty" id="reviewsEmpty" style="display:none;">
+                <i class="ci-Chat_Circle"></i>
+                <h3 data-i18n="reviews_empty_title">No reviews match these filters</h3>
+                <p data-i18n="reviews_empty_text">Try changing the filters or be the first to add a local review for this course.</p>
+            </div>
+
+            <!-- No Course Selected State -->
+            <div class="reviews-placeholder" id="reviewsPlaceholder">
+                <i class="ci-Search"></i>
+                <h3 data-i18n="reviews_placeholder_title">Select a course above</h3>
+                <p data-i18n="reviews_placeholder_text">Start with a reviewed demo course or search the full course list.</p>
+                <div class="reviewed-course-chips" id="reviewedCourseChips"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Full Footer -->
+    <footer id="help" class="footer student-footer">
+        <div class="footer-hero">
+            <div class="footer-brand-block">
+                <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper" class="footer-brand-logo">
+                <p>Independent COMP1100 student MVP. This prototype helps demonstrate course-planning ideas, interview-driven learning and design iteration.</p>
+            </div>
+            <div class="footer-proof-points">
+                <span>Student prototype</span>
+                <span>Not an official UQ service</span>
+                <span>Verify details with UQ</span>
+            </div>
+        </div>
+
+        <div class="footer-columns footer-prototype-columns">
+            <div class="footer-col">
+                <h4>Working with UQ</h4>
+                <ul>
+                    <li><a href="https://about.uq.edu.au/careers" target="_blank" rel="noopener noreferrer">Careers and job search</a></li>
+                    <li><a href="https://about.uq.edu.au/strategy-values/strategic-plan" target="_blank" rel="noopener noreferrer">Strategic Plan</a></li>
+                    <li><a href="https://about.uq.edu.au/staff-intranet" target="_blank" rel="noopener noreferrer">Staff Intranet</a></li>
+                    <li><a href="https://my.uq.edu.au/information-and-services/information-technology/student-staff-it-support" target="_blank" rel="noopener noreferrer">IT support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Current students</h4>
+                <ul>
+                    <li><a href="https://my.uq.edu.au/" target="_blank" rel="noopener noreferrer">my.UQ</a></li>
+                    <li><a href="https://programs-courses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Programs and courses</a></li>
+                    <li><a href="https://about.uq.edu.au/academic-calendar" target="_blank" rel="noopener noreferrer">Academic calendar</a></li>
+                    <li><a href="https://my.uq.edu.au/student-support" target="_blank" rel="noopener noreferrer">Student support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Library</h4>
+                <ul>
+                    <li><a href="https://library.uq.edu.au/" target="_blank" rel="noopener noreferrer">Library</a></li>
+                    <li><a href="https://web.library.uq.edu.au/study-and-learning-support" target="_blank" rel="noopener noreferrer">Study and learning support</a></li>
+                    <li><a href="https://web.library.uq.edu.au/research-and-publish" target="_blank" rel="noopener noreferrer">Research and publish</a></li>
+                    <li><a href="https://web.library.uq.edu.au/visit" target="_blank" rel="noopener noreferrer">Visit</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact UQ</h4>
+                <ul>
+                    <li><a href="https://contacts.uq.edu.au/contacts" target="_blank" rel="noopener noreferrer">Contact UQ</a></li>
+                    <li><a href="https://www.uq.edu.au/complaints-appeals" target="_blank" rel="noopener noreferrer">Make a complaint</a></li>
+                    <li><a href="https://about.uq.edu.au/faculties-schools-centres-and-institutes" target="_blank" rel="noopener noreferrer">Faculties, schools, institutes and centres</a></li>
+                    <li><a href="https://campuses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Campuses, maps and transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Prototype notes</h4>
+                <ul>
+                    <li>Reviews are stored locally in this browser.</li>
+                    <li>No analytics or server upload are added.</li>
+                    <li>Do not enter sensitive personal information.</li>
+                    <li>Course data is for demonstration and must be checked against official UQ pages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> UQ Course Select Helper is an independent student prototype. It is not affiliated with, endorsed by, or operated by The University of Queensland. UQ names and course references are used only to describe the student problem space and demonstration dataset.
+        </div>
+    </footer>
+
+    <script src="js/i18n.js?v=20260527-5"></script>
+    <script src="js/shared.js?v=20260527-5"></script>
+    <script src="js/reviews.js?v=20260527-5"></script>
+</body>
+
+</html>
+
+

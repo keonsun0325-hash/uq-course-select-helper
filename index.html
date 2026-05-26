@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>UQ Course Select Helper | Smart Course Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="coolicons.css?v=20260527-5">
+    <link rel="stylesheet" href="css/shared.css?v=20260527-5">
+    <link rel="stylesheet" href="css/home.css?v=20260527-5">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Background -->
+         <!-- Background image layer -->
+        <div class="bg">
+            <img src="background picture 02.png" alt="UQ Campus with Jacaranda">
+        </div>
+
+        <!-- Content -->
+         <!-- Navigation bar: logo, page links, language switcher, and action buttons -->
+        <div class="content">
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-lockup" aria-label="UQ Course Select Helper home">
+                        <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper">
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <i class="ci-House_01"></i>
+                            <span data-i18n="nav_home">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="nav_courses">Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="timetable.html">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="nav_timetable">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reviews.html">
+                            <i class="ci-Users"></i>
+                            <span data-i18n="nav_reviews">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#help">
+                            <i class="ci-Circle_Help"></i>
+                            <span data-i18n="nav_help">Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-wrapper">
+                        <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangPopover()">
+                            <i class="ci-Globe"></i>
+                        </button>
+                        <div class="lang-popover" id="langPopover">
+                            <div class="lang-popover-title">Language</div>
+                            <div class="lang-popover-divider"></div>
+                            <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">English</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                            <button class="lang-option" data-lang="zh" onclick="switchLang('zh')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">Chinese</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="nav-menu-btn" aria-label="Menu">
+                        <i class="ci-Hamburger_MD"></i>
+                    </button>
+                    <a href="timetable.html" class="nav-cta" aria-label="View Timetable">
+                        <i class="ci-Bookmark"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="prototype-notice">
+                <i class="ci-Info_Circle" aria-hidden="true"></i>
+                <span><strong>Student prototype.</strong> Not an official UQ website. Course information is for demonstration; verify details on official UQ pages before enrolment. Reviews stay in this browser only.</span>
+            </div>
+
+            <!-- Hero Area -->
+            <div class="hero-area">
+
+                <!-- Left Side -->
+                <div class="hero-left">
+                    <h1 class="hero-title" data-i18n-html="hero_title">
+                        Plan <span class="highlight-italic">Your</span><br>
+                        <span class="highlight">UQ</span> Semester<br>
+                        <span class="highlight-smarter">Smarter.</span>
+                    </h1>
+
+                    <div class="hero-badge">
+                        <i class="ci-Clock"></i>
+                        <span data-i18n="badge">2026 Semester 2 Courses Now Available</span>
+                    </div>
+
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">
+                        Search courses, read student feedback, and build a timetable prototype in one place.
+                    </p>
+
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search by course code or name..." id="searchInput"
+                            data-i18n-ph="search_placeholder">
+                        <button data-i18n="search_btn">Search</button>
+                    </div>
+
+                    <div class="course-previews">
+                        <div class="course-thumb">COMP3506</div>
+                        <div class="course-thumb">FINM3403</div>
+                        <div class="course-thumb">DATA7001</div>
+                        <div class="course-thumb">STAT2004</div>
+                        <div class="course-count"><span data-i18n="courses_label">149 demo courses</span></div>
+                    </div>
+
+                    <div class="home-action-grid" aria-label="Prototype workflow shortcuts">
+                        <a href="courses.html" class="home-action-card">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="action_1_label">Course Catalog</span>
+                            <strong data-i18n="action_1_value">149 demo courses</strong>
+                        </a>
+                        <a href="reviews.html" class="home-action-card">
+                            <i class="ci-Chat_Circle"></i>
+                            <span data-i18n="action_2_label">Review Insight</span>
+                            <strong data-i18n="action_2_value">Workload + difficulty</strong>
+                        </a>
+                        <a href="timetable.html" class="home-action-card">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="action_3_label">Timetable Builder</span>
+                            <strong data-i18n="action_3_value">Clash-aware planning</strong>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side -->
+                <div class="hero-right">
+                    <div class="info-card">
+                        <div class="info-card-label" data-i18n="card_label">Course Select Helper Recommends</div>
+                        <h3 data-i18n-html="card_title">
+                            <span class="light">Find the</span><br>
+                            <span class="card-italic">Best</span> <span class="light">Courses</span><br>
+                            <span class="light">Anytime,</span> <span class="card-italic">Anywhere.</span>
+                        </h3>
+                        <a href="courses.html?recommended=1" class="info-card-btn" data-i18n="card_btn">View
+                            Recommendations</a>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-card-header" data-i18n="value_header">Value Proposition</div>
+                        <div class="value-flow">
+                            <div class="value-step">
+                                <span data-i18n="value_problem_label">Problem</span>
+                                <strong data-i18n="value_problem">Course choice feels scattered</strong>
+                            </div>
+                            <div class="value-step">
+                                <span data-i18n="value_data_label">Data</span>
+                                <strong data-i18n="value_data">Interview data asks for peer context</strong>
+                            </div>
+                            <div class="value-step">
+                                <span data-i18n="value_response_label">Response</span>
+                                <strong data-i18n="value_response">Search + reviews + timetable</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trust-badge">
+                        <div class="trust-metric">42</div>
+                        <div class="trust-text" data-i18n-html="trust"><strong>student interviews</strong><br>across two iterations
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="bottom-bar">
+                <div class="bottom-left bottom-proof">
+                    <span class="bottom-label">Student MVP prototype</span>
+                    <span class="bottom-proof-item">No official UQ affiliation</span>
+                    <span class="bottom-proof-item">No analytics added</span>
+                    <span class="bottom-proof-item">Verify course details on UQ pages</span>
+                </div>
+
+                <div class="bottom-right">
+                    <span class="bottom-scroll-hint" data-i18n="scroll_hint">Scroll down for more</span>
+                    <i class="ci-Chevron_Down"></i>
+                </div>
+            </div>        </div>
+    </div>
+
+    <div class="home-footer-bridge" aria-hidden="true"></div>
+
+    <!-- Full Footer -->
+    <footer id="help" class="footer student-footer">
+        <div class="footer-hero">
+            <div class="footer-brand-block">
+                <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper" class="footer-brand-logo">
+                <p>Independent COMP1100 student MVP. This prototype helps demonstrate course-planning ideas, interview-driven learning and design iteration.</p>
+            </div>
+            <div class="footer-proof-points">
+                <span>Student prototype</span>
+                <span>Not an official UQ service</span>
+                <span>Verify details with UQ</span>
+            </div>
+        </div>
+
+        <div class="footer-columns footer-prototype-columns">
+            <div class="footer-col">
+                <h4>Working with UQ</h4>
+                <ul>
+                    <li><a href="https://about.uq.edu.au/careers" target="_blank" rel="noopener noreferrer">Careers and job search</a></li>
+                    <li><a href="https://about.uq.edu.au/strategy-values/strategic-plan" target="_blank" rel="noopener noreferrer">Strategic Plan</a></li>
+                    <li><a href="https://about.uq.edu.au/staff-intranet" target="_blank" rel="noopener noreferrer">Staff Intranet</a></li>
+                    <li><a href="https://my.uq.edu.au/information-and-services/information-technology/student-staff-it-support" target="_blank" rel="noopener noreferrer">IT support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Current students</h4>
+                <ul>
+                    <li><a href="https://my.uq.edu.au/" target="_blank" rel="noopener noreferrer">my.UQ</a></li>
+                    <li><a href="https://programs-courses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Programs and courses</a></li>
+                    <li><a href="https://about.uq.edu.au/academic-calendar" target="_blank" rel="noopener noreferrer">Academic calendar</a></li>
+                    <li><a href="https://my.uq.edu.au/student-support" target="_blank" rel="noopener noreferrer">Student support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Library</h4>
+                <ul>
+                    <li><a href="https://library.uq.edu.au/" target="_blank" rel="noopener noreferrer">Library</a></li>
+                    <li><a href="https://web.library.uq.edu.au/study-and-learning-support" target="_blank" rel="noopener noreferrer">Study and learning support</a></li>
+                    <li><a href="https://web.library.uq.edu.au/research-and-publish" target="_blank" rel="noopener noreferrer">Research and publish</a></li>
+                    <li><a href="https://web.library.uq.edu.au/visit" target="_blank" rel="noopener noreferrer">Visit</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact UQ</h4>
+                <ul>
+                    <li><a href="https://contacts.uq.edu.au/contacts" target="_blank" rel="noopener noreferrer">Contact UQ</a></li>
+                    <li><a href="https://www.uq.edu.au/complaints-appeals" target="_blank" rel="noopener noreferrer">Make a complaint</a></li>
+                    <li><a href="https://about.uq.edu.au/faculties-schools-centres-and-institutes" target="_blank" rel="noopener noreferrer">Faculties, schools, institutes and centres</a></li>
+                    <li><a href="https://campuses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Campuses, maps and transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Prototype notes</h4>
+                <ul>
+                    <li>Reviews are stored locally in this browser.</li>
+                    <li>No analytics or server upload are added.</li>
+                    <li>Do not enter sensitive personal information.</li>
+                    <li>Course data is for demonstration and must be checked against official UQ pages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> UQ Course Select Helper is an independent student prototype. It is not affiliated with, endorsed by, or operated by The University of Queensland. UQ names and course references are used only to describe the student problem space and demonstration dataset.
+        </div>
+    </footer>
+
+    <script>
+        // ===== i18n Dictionary =====
+        const i18n = {
+            en: {
+                nav_home: 'Home',
+                nav_courses: 'Courses',
+                nav_timetable: 'Timetable',
+                nav_reviews: 'Reviews',
+                nav_help: 'Help',
+                menu: 'Menu',
+                nav_cta: 'Get Started',
+                badge: '2026 Semester 2 Courses Now Available',
+                hero_title: 'Plan Your<br><span class="highlight">UQ</span> Semester<br><span class="highlight-smarter">Smarter</span>',
+                hero_subtitle: 'Search courses, read student feedback, and build a timetable prototype in one place.',
+                search_placeholder: 'Search by course code or name...',
+                search_btn: 'Search',
+                courses_label: '149 demo courses',
+                card_label: 'Course Select Helper Recommends',
+                card_title: '<span class="light">Find the</span><br><span class="accent-word">Best</span> Courses<br>Anytime, <span class="accent-word">Anywhere</span>',
+                card_btn: 'View Recommendations',
+                trust: '<strong>student interviews</strong><br>across two iterations',
+                action_1_label: 'Course Catalog',
+                action_1_value: '149 demo courses',
+                action_2_label: 'Review Insight',
+                action_2_value: 'Workload + difficulty',
+                action_3_label: 'Timetable Builder',
+                action_3_value: 'Clash-aware planning',
+                value_header: 'Value Proposition',
+                value_problem_label: 'Problem',
+                value_problem: 'Course choice feels scattered',
+                value_data_label: 'Data',
+                value_data: 'Interview data asks for peer context',
+                value_response_label: 'Response',
+                value_response: 'Search + reviews + timetable',
+                floating: 'A Smarter Way to<br>Plan Your Degree',
+                scroll_hint: 'Scroll down for more',
+                hints: [
+                    'Search by course code or name...',
+                    'Try COMP3506 Data Structures',
+                    'Try FINM3403 Corporate Finance',
+                    'Try DATA7001 Intro to Data Science',
+                    'Try MATH1051 Calculus'
+                ]
+            },
+            zh: {
+                nav_home: 'Home',
+                nav_courses: 'Courses',
+                nav_timetable: 'Timetable',
+                nav_reviews: 'Reviews',
+                nav_help: 'Help',
+                menu: 'Menu',
+                nav_cta: 'Get Started',
+                badge: '2026 Semester 2 Courses Now Available',
+                hero_title: 'Plan Your<br><span class="highlight">UQ</span> Semester<br><span class="highlight-smarter">Smarter</span>',
+                hero_subtitle: 'Search courses, read student feedback, and build a timetable prototype in one place.',
+                search_placeholder: 'Search by course code or name...',
+                search_btn: 'Search',
+                courses_label: '149 demo courses',
+                card_label: 'Course Select Helper Recommends',
+                card_title: '<span class="light">Find the</span><br><span class="accent-word">Best</span> Courses<br>Anytime, <span class="accent-word">Anywhere</span>',
+                card_btn: 'View Recommendations',
+                trust: '<strong>student interviews</strong><br>across two iterations',
+                action_1_label: 'Course Catalog',
+                action_1_value: '149 demo courses',
+                action_2_label: 'Review Insight',
+                action_2_value: 'Workload + difficulty',
+                action_3_label: 'Timetable Builder',
+                action_3_value: 'Clash-aware planning',
+                value_header: 'Value Proposition',
+                value_problem_label: 'Problem',
+                value_problem: 'Course choice feels scattered',
+                value_data_label: 'Data',
+                value_data: 'Interview data asks for peer context',
+                value_response_label: 'Response',
+                value_response: 'Search + reviews + timetable',
+                floating: 'A Smarter Way to<br>Plan Your Degree',
+                scroll_hint: 'Scroll down for more',
+                hints: [
+                    'Search by course code or name...',
+                    'Try COMP3506 Data Structures',
+                    'Try FINM3403 Corporate Finance',
+                    'Try DATA7001 Intro to Data Science',
+                    'Try MATH1051 Calculus'
+                ]
+            }
+        };
+
+        let currentLang = 'en';
+
+        // ===== Popover Toggle =====
+        const langPopover = document.getElementById('langPopover');
+        const langGlobeBtn = document.getElementById('langGlobeBtn');
+
+        function toggleLangPopover() {
+            const isOpen = langPopover.classList.toggle('show');
+            langGlobeBtn.classList.toggle('active', isOpen);
+        }
+
+        // Close popover when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.lang-wrapper')) {
+                langPopover.classList.remove('show');
+                langGlobeBtn.classList.remove('active');
+            }
+        });
+
+        function switchLang(lang) {
+            currentLang = lang;
+            const dict = i18n[lang];
+
+            // Update popover options
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update popover title
+            document.querySelector('.lang-popover-title').textContent = 'Language';
+
+            // Close popover after selection
+            setTimeout(() => {
+                langPopover.classList.remove('show');
+                langGlobeBtn.classList.remove('active');
+            }, 200);
+
+            // Update text content (data-i18n)
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[key] !== undefined) el.textContent = dict[key];
+            });
+
+            // Update innerHTML (data-i18n-html) for elements with inner tags
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.dataset.i18nHtml;
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
+            });
+
+            // Update placeholders (data-i18n-ph)
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.dataset.i18nPh;
+                if (dict[key] !== undefined) el.placeholder = dict[key];
+            });
+
+            // Reset placeholder rotation
+            hintIndex = 0;
+        }
+
+        // ===== Search Bar Functionality =====
+        function performSearch() {
+            const val = document.getElementById('searchInput').value.trim();
+            if (val) {
+                window.location.href = 'courses.html?q=' + encodeURIComponent(val);
+            }
+        }
+
+        document.querySelector('.search-bar button').addEventListener('click', performSearch);
+        document.getElementById('searchInput').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') performSearch();
+        });
+
+        // Make course thumbs clickable
+        document.querySelectorAll('.course-thumb').forEach(function (thumb) {
+            thumb.addEventListener('click', function () {
+                window.location.href = 'courses.html?q=' + encodeURIComponent(thumb.textContent.trim());
+            });
+        });
+
+        // ===== Placeholder Rotation =====
+        const input = document.getElementById('searchInput');
+        let hintIndex = 0;
+        setInterval(() => {
+            if (document.activeElement !== input) {
+                const hints = i18n[currentLang].hints;
+                hintIndex = (hintIndex + 1) % hints.length;
+                input.placeholder = hints[hintIndex];
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+﻿UQ Course Selection Website Instructions
+
+Please do not open or copy only one HTML file, such as index.html.
+This website needs the css, js, data, logos, image files, and other folders in the same directory to work correctly.
+
+If you open the local files directly in a browser, for example by double-clicking index.html or course-detail.html,
+the browser may block the website from reading data/courses.json.
+In that case, a course detail page may show:
+
+Course Not Found
+
+This does not mean the copied folder is broken.
+The most reliable way to open the website is to start a local server inside this folder.
+
+
+How to Open the Website
+
+1. Open this folder:
+
+   UQ Course Selection
+
+2. Right-click on an empty area inside the folder, then choose:
+
+   Open in Terminal
+
+3. In the terminal, type this command and press Enter:
+
+   python -m http.server 8000
+
+4. Keep the terminal window open.
+
+5. Open a browser and visit:
+
+   http://localhost:8000/index.html
+
+
+If Port 8000 Is Already in Use
+
+Use port 8001 instead:
+
+   python -m http.server 8001
+
+Then open this address in the browser:
+
+   http://localhost:8001/index.html
+
+
+Moving or Copying the Folder
+
+You can move or copy the whole UQ Course Selection folder.
+As long as index.html, course-detail.html, css, js, data, logos, images, and the other files stay together,
+the website can still be opened correctly.
+
+Do not move only index.html by itself.
+Otherwise, the styles, images, course data, or course detail pages may not work correctly.

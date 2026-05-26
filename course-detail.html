@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Course Detail | UQ Course Select Helper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="coolicons.css">
+    <link rel="stylesheet" href="css/shared.css?v=20260527-5">
+    <link rel="stylesheet" href="css/course-detail.css?v=20260527-5">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Purple Gradient Background -->
+        <div class="page-bg"></div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-lockup" aria-label="UQ Course Select Helper home">
+                        <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper">
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <i class="ci-House_01"></i>
+                            <span data-i18n="nav_home">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="nav_courses">Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="timetable.html">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="nav_timetable">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reviews.html">
+                            <i class="ci-Users"></i>
+                            <span data-i18n="nav_reviews">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#help">
+                            <i class="ci-Circle_Help"></i>
+                            <span data-i18n="nav_help">Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-wrapper">
+                        <button class="lang-globe-btn" id="langGlobeBtn" onclick="toggleLangPopover()">
+                            <i class="ci-Globe"></i>
+                        </button>
+                        <div class="lang-popover" id="langPopover">
+                            <div class="lang-popover-title">Language</div>
+                            <div class="lang-popover-divider"></div>
+                            <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">English</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                            <button class="lang-option" data-lang="zh" onclick="switchLang('zh')">
+                                <span class="lang-option-dot"></span>
+                                <span class="lang-option-label">Chinese</span>
+                                <i class="ci-Check lang-option-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="nav-menu-btn" aria-label="Menu">
+                        <i class="ci-Hamburger_MD"></i>
+                    </button>
+                    <a href="index.html" class="nav-cta" aria-label="Get Started">
+                        <i class="ci-Bookmark"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p data-i18n="cd_loading">Loading course details...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-state" id="errorState" style="display:none;">
+                <i class="ci-Close_Circle"></i>
+                <h2 data-i18n="cd_not_found">Course Not Found</h2>
+                <p data-i18n="cd_not_found_desc">The course you're looking for doesn't exist or the code is incorrect.
+                </p>
+                <a href="courses.html" class="back-link" data-i18n="cd_browse_courses">Browse All Courses</a>
+            </div>
+
+            <!-- Hero Banner -->
+            <div class="course-hero" id="courseHero" style="display:none;">
+                <a href="courses.html" class="breadcrumb">
+                    <i class="ci-Chevron_Left"></i>
+                    <span data-i18n="cd_back">Back to Courses</span>
+                </a>
+                <div class="hero-content">
+                    <span class="course-level-badge" id="heroLevel"></span>
+                    <h1 class="course-code" id="heroCode"></h1>
+                    <p class="course-title" id="heroTitle"></p>
+                </div>
+            </div>
+
+            <!-- Two-Column Layout -->
+            <div class="course-layout" id="courseLayout" style="display:none;">
+
+                <!-- Left: Main Content -->
+                <div class="course-main">
+
+                    <!-- About -->
+                    <section class="content-section">
+                        <h2 class="section-title">
+                            <i class="ci-Book_Open"></i>
+                            <span data-i18n="cd_about">About This Course</span>
+                        </h2>
+                        <div class="section-body">
+                            <p id="courseDescription"></p>
+                        </div>
+                    </section>
+
+                    <!-- Prerequisites -->
+                    <section class="content-section">
+                        <h2 class="section-title">
+                            <i class="ci-Link"></i>
+                            <span data-i18n="cd_prereqs">Prerequisites</span>
+                        </h2>
+                        <div class="section-body" id="prerequisitesBody">
+                            <p id="prerequisitesText"></p>
+                            <div class="prereq-chips" id="prerequisitesChips"></div>
+                        </div>
+                    </section>
+
+                    <div class="prereq-checker">
+                        <label for="completedCoursesInput">Completed courses</label>
+                        <input type="text" id="completedCoursesInput" placeholder="e.g. CSSE1001, MATH1061, INFS1200">
+                        <button type="button" id="checkPrereqsBtn">Check Eligibility</button>
+                        <div id="prereqCheckResult"></div>
+                    </div>
+
+                    <!-- Assessment -->
+                    <section class="content-section">
+                        <h2 class="section-title">
+                            <i class="ci-Edit"></i>
+                            <span data-i18n="cd_assessment">Assessment</span>
+                        </h2>
+                        <div class="section-body">
+                            <div id="assessmentContent"></div>
+                        </div>
+                    </section>
+
+                    <!-- Incompatible Courses -->
+                    <section class="content-section" id="incompatibleSection" style="display:none;">
+                        <h2 class="section-title">
+                            <i class="ci-Close_Circle"></i>
+                            <span data-i18n="cd_incompatible">Incompatible Courses</span>
+                        </h2>
+                        <div class="section-body">
+                            <p id="incompatibleText"></p>
+                            <div class="prereq-chips" id="incompatibleChips"></div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right: Sidebar -->
+                <div class="course-sidebar">
+
+                    <!-- Quick Facts Card -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-card-title">
+                            <i class="ci-Bar_Chart"></i>
+                            <span data-i18n="cd_quick_facts">Quick Facts</span>
+                        </h3>
+                        <ul class="quick-facts-list">
+                            <li>
+                                <span class="fact-label" data-i18n="cd_units">Units</span>
+                                <span class="fact-value" id="factUnits">--</span>
+                            </li>
+                            <li>
+                                <span class="fact-label" data-i18n="cd_level">Level</span>
+                                <span class="fact-value" id="factLevel">--</span>
+                            </li>
+                            <li>
+                                <span class="fact-label" data-i18n="cd_faculty">Faculty</span>
+                                <span class="fact-value" id="factFaculty">--</span>
+                            </li>
+                            <li>
+                                <span class="fact-label" data-i18n="cd_school">School</span>
+                                <span class="fact-value" id="factSchool">--</span>
+                            </li>
+                            <li>
+                                <span class="fact-label" data-i18n="cd_duration">Duration</span>
+                                <span class="fact-value" id="factDuration">--</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Offerings Card -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-card-title">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="cd_offerings">Offerings</span>
+                        </h3>
+                        <div id="offeringsContent">
+                            <p class="no-data" data-i18n="cd_no_offerings">No offerings available.</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="sidebar-actions">
+                        <button class="action-btn action-btn-primary" id="addToTimetableBtn">
+                            <i class="ci-Calendar"></i>
+                            <span data-i18n="cd_add_timetable">Add to Timetable</span>
+                        </button>
+                        <button class="action-btn action-btn-secondary" id="writeReviewBtn">
+                            <i class="ci-Edit"></i>
+                            <span data-i18n="cd_write_review">Write a Review</span>
+                        </button>
+                        <a class="action-btn action-btn-official" id="officialCourseLink" href="#" target="_blank"
+                            rel="noopener">
+                            <i class="ci-External_Link"></i>
+                            <span>Official UQ Page</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="ci-Check toast-icon"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Footer -->
+    <footer id="help" class="footer student-footer">
+        <div class="footer-hero">
+            <div class="footer-brand-block">
+                <img src="logos/course-select-helper-logo.svg" alt="UQ Course Select Helper" class="footer-brand-logo">
+                <p>Independent COMP1100 student MVP. This prototype helps demonstrate course-planning ideas, interview-driven learning and design iteration.</p>
+            </div>
+            <div class="footer-proof-points">
+                <span>Student prototype</span>
+                <span>Not an official UQ service</span>
+                <span>Verify details with UQ</span>
+            </div>
+        </div>
+
+        <div class="footer-columns footer-prototype-columns">
+            <div class="footer-col">
+                <h4>Working with UQ</h4>
+                <ul>
+                    <li><a href="https://about.uq.edu.au/careers" target="_blank" rel="noopener noreferrer">Careers and job search</a></li>
+                    <li><a href="https://about.uq.edu.au/strategy-values/strategic-plan" target="_blank" rel="noopener noreferrer">Strategic Plan</a></li>
+                    <li><a href="https://about.uq.edu.au/staff-intranet" target="_blank" rel="noopener noreferrer">Staff Intranet</a></li>
+                    <li><a href="https://my.uq.edu.au/information-and-services/information-technology/student-staff-it-support" target="_blank" rel="noopener noreferrer">IT support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Current students</h4>
+                <ul>
+                    <li><a href="https://my.uq.edu.au/" target="_blank" rel="noopener noreferrer">my.UQ</a></li>
+                    <li><a href="https://programs-courses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Programs and courses</a></li>
+                    <li><a href="https://about.uq.edu.au/academic-calendar" target="_blank" rel="noopener noreferrer">Academic calendar</a></li>
+                    <li><a href="https://my.uq.edu.au/student-support" target="_blank" rel="noopener noreferrer">Student support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Library</h4>
+                <ul>
+                    <li><a href="https://library.uq.edu.au/" target="_blank" rel="noopener noreferrer">Library</a></li>
+                    <li><a href="https://web.library.uq.edu.au/study-and-learning-support" target="_blank" rel="noopener noreferrer">Study and learning support</a></li>
+                    <li><a href="https://web.library.uq.edu.au/research-and-publish" target="_blank" rel="noopener noreferrer">Research and publish</a></li>
+                    <li><a href="https://web.library.uq.edu.au/visit" target="_blank" rel="noopener noreferrer">Visit</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact UQ</h4>
+                <ul>
+                    <li><a href="https://contacts.uq.edu.au/contacts" target="_blank" rel="noopener noreferrer">Contact UQ</a></li>
+                    <li><a href="https://www.uq.edu.au/complaints-appeals" target="_blank" rel="noopener noreferrer">Make a complaint</a></li>
+                    <li><a href="https://about.uq.edu.au/faculties-schools-centres-and-institutes" target="_blank" rel="noopener noreferrer">Faculties, schools, institutes and centres</a></li>
+                    <li><a href="https://campuses.uq.edu.au/" target="_blank" rel="noopener noreferrer">Campuses, maps and transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Prototype notes</h4>
+                <ul>
+                    <li>Reviews are stored locally in this browser.</li>
+                    <li>No analytics or server upload are added.</li>
+                    <li>Do not enter sensitive personal information.</li>
+                    <li>Course data is for demonstration and must be checked against official UQ pages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> UQ Course Select Helper is an independent student prototype. It is not affiliated with, endorsed by, or operated by The University of Queensland. UQ names and course references are used only to describe the student problem space and demonstration dataset.
+        </div>
+    </footer>
+
+    <script src="js/i18n.js?v=20260527-5"></script>
+    <script src="js/shared.js?v=20260527-5"></script>
+    <script src="js/course-detail.js?v=20260527-5"></script>
+</body>
+
+</html>
+
+

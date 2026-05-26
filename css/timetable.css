@@ -1,0 +1,707 @@
+﻿/* ===== Timetable Page Layout ===== */
+.page-timetable {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(255, 79, 163, 0.2), transparent 36%),
+        radial-gradient(ellipse at 88% 12%, rgba(255, 156, 201, 0.13), transparent 36%),
+        linear-gradient(135deg, #050305 0%, var(--brand-ink) 42%, #1c0a16 100%);
+}
+
+.page-timetable .content {
+    position: relative;
+    z-index: 1;
+    padding: 0 48px 64px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Active nav link */
+.nav-active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ===== Toolbar ===== */
+.tt-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    margin: 24px 0 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    animation: fadeInUp 0.6s ease both 0.2s;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.tt-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tt-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tt-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.tt-semester-select-wrapper {
+    position: relative;
+}
+
+.tt-semester-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px 36px 10px 16px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.tt-semester-select:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.tt-semester-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 79, 163, 0.24);
+}
+
+.tt-semester-select option {
+    background: #13211f;
+    color: #fff;
+}
+
+.tt-units-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    border-radius: 100px;
+    background: rgba(255, 79, 163, 0.18);
+    border: 1px solid rgba(255, 79, 163, 0.3);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.tt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+
+.tt-btn i {
+    font-size: 16px;
+}
+
+.tt-btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tt-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.tt-btn-primary {
+    background: #fff;
+    color: var(--brand-ink);
+}
+
+.tt-btn-primary:hover {
+    background: #ffe5f1;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Two-Panel Layout ===== */
+.tt-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    animation: fadeInUp 0.6s ease both 0.35s;
+    min-height: 0;
+}
+
+.tt-grid-panel {
+    min-width: 0;
+    overflow-x: auto;
+}
+
+/* ===== Grid Card ===== */
+.tt-grid-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== Weekly Grid ===== */
+.tt-grid {
+    display: grid;
+    grid-template-columns: 72px repeat(5, 1fr);
+    grid-template-rows: 52px;
+    grid-auto-rows: 60px;
+    width: 100%;
+    min-width: 600px;
+}
+
+.tt-grid-corner {
+    background: #fafafc;
+    border-bottom: 2px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.tt-day-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand-ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #fafafc;
+    border-bottom: 2px solid #eee;
+    border-right: 1px solid #f0f0f2;
+}
+
+.tt-day-header:last-of-type {
+    border-right: none;
+}
+
+.tt-time-label {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    background: #fafafc;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f2;
+    user-select: none;
+}
+
+.tt-cell {
+    border-right: 1px solid #f0f0f2;
+    border-bottom: 1px solid #f0f0f2;
+    position: relative;
+    transition: background 0.15s;
+    min-height: 60px;
+}
+
+.tt-cell:nth-child(6n+1) {
+    border-right: none;
+}
+
+.tt-cell.tt-cell-hover {
+    background: rgba(255, 79, 163, 0.08);
+}
+
+.tt-cell.tt-cell-drop-target {
+    background: rgba(255, 79, 163, 0.14);
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+/* ===== Course Blocks ===== */
+.tt-blocks-layer {
+    position: absolute;
+    top: 52px;
+    left: 72px;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.tt-block {
+    position: absolute;
+    border-radius: 10px;
+    padding: 8px 10px;
+    cursor: grab;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.15s;
+    border: 2px solid transparent;
+    z-index: 10;
+}
+
+.tt-block:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    z-index: 20;
+}
+
+.tt-block.dragging {
+    opacity: 0.6;
+    cursor: grabbing;
+    transform: scale(1.05);
+    z-index: 100;
+}
+
+.tt-block-code {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.tt-block-title {
+    font-size: 10px;
+    font-weight: 500;
+    opacity: 0.85;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tt-block-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+    pointer-events: all;
+    padding: 0;
+    line-height: 1;
+}
+
+.tt-block:hover .tt-block-remove {
+    display: flex;
+}
+
+.tt-block-remove:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Clash indicator */
+.tt-block.tt-clash {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3), 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.tt-block.tt-clash::after {
+    content: '!';
+    position: absolute;
+    top: 4px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== 8 Preset Colors ===== */
+.tt-color-0 { background: rgba(139, 92, 246, 0.18); color: #6d28d9; border-color: rgba(139, 92, 246, 0.3); }
+.tt-color-0 .tt-block-code { color: #6d28d9; }
+.tt-color-1 { background: rgba(59, 130, 246, 0.18); color: #1d4ed8; border-color: rgba(59, 130, 246, 0.3); }
+.tt-color-1 .tt-block-code { color: #1d4ed8; }
+.tt-color-2 { background: rgba(34, 197, 94, 0.18); color: #15803d; border-color: rgba(34, 197, 94, 0.3); }
+.tt-color-2 .tt-block-code { color: #15803d; }
+.tt-color-3 { background: rgba(245, 158, 11, 0.18); color: #b45309; border-color: rgba(245, 158, 11, 0.3); }
+.tt-color-3 .tt-block-code { color: #b45309; }
+.tt-color-4 { background: rgba(244, 63, 94, 0.18); color: #be123c; border-color: rgba(244, 63, 94, 0.3); }
+.tt-color-4 .tt-block-code { color: #be123c; }
+.tt-color-5 { background: rgba(20, 184, 166, 0.18); color: #0f766e; border-color: rgba(20, 184, 166, 0.3); }
+.tt-color-5 .tt-block-code { color: #0f766e; }
+.tt-color-6 { background: rgba(249, 115, 22, 0.18); color: #c2410c; border-color: rgba(249, 115, 22, 0.3); }
+.tt-color-6 .tt-block-code { color: #c2410c; }
+.tt-color-7 { background: rgba(99, 102, 241, 0.18); color: #4338ca; border-color: rgba(99, 102, 241, 0.3); }
+.tt-color-7 .tt-block-code { color: #4338ca; }
+
+/* Bank item color dots */
+.tt-bank-dot-0 { background: #8b5cf6; }
+.tt-bank-dot-1 { background: #3b82f6; }
+.tt-bank-dot-2 { background: #22c55e; }
+.tt-bank-dot-3 { background: #ff9cc9; }
+.tt-bank-dot-4 { background: #f43f5e; }
+.tt-bank-dot-5 { background: #14b8a6; }
+.tt-bank-dot-6 { background: #f97316; }
+.tt-bank-dot-7 { background: #6366f1; }
+
+/* ===== Course Bank Panel ===== */
+.tt-bank-panel {
+    min-width: 0;
+}
+
+.tt-bank-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 200px);
+}
+
+.tt-bank-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tt-bank-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tt-bank-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 8px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tt-bank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.tt-bank-list::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+}
+
+.tt-bank-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tt-bank-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ===== Bank Course Item ===== */
+.tt-bank-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: grab;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.tt-bank-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateX(4px);
+}
+
+.tt-bank-item:active {
+    cursor: grabbing;
+}
+
+.tt-bank-item.dragging {
+    opacity: 0.4;
+}
+
+.tt-bank-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.tt-bank-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tt-bank-item-code {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.2px;
+}
+
+.tt-bank-item-title {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tt-bank-item-units {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Bank item remove */
+.tt-bank-item-remove {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.tt-bank-item-remove:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+/* ===== Empty State ===== */
+.tt-bank-empty {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 16px;
+    gap: 12px;
+}
+
+.tt-bank-empty.visible {
+    display: flex;
+}
+
+.tt-bank-empty i {
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.tt-bank-empty p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.5;
+}
+
+/* ===== Add Course Button ===== */
+.tt-add-course-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 79, 163, 0.14);
+    border: 1px dashed rgba(255, 79, 163, 0.3);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.tt-add-course-btn:hover {
+    background: rgba(255, 79, 163, 0.24);
+    border-color: rgba(255, 79, 163, 0.5);
+    color: #ffd4e8;
+    transform: translateY(-1px);
+}
+
+.tt-add-course-btn i {
+    font-size: 16px;
+}
+
+/* ===== Toast Notification ===== */
+.tt-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    padding: 14px 28px;
+    border-radius: 100px;
+    background: rgba(9, 28, 25, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.2, 0.6, 0.35, 1);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.tt-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+    .tt-layout {
+        grid-template-columns: 1fr 280px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .page-timetable .content {
+        padding: 0 28px 48px;
+    }
+
+    .tt-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .tt-bank-card {
+        position: static;
+        max-height: none;
+    }
+
+    .tt-bank-list {
+        max-height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-timetable .content {
+        padding: 0 20px 40px;
+    }
+
+    .tt-toolbar {
+        padding: 16px 20px;
+        margin: 16px 0 20px;
+    }
+
+    .tt-title {
+        font-size: 20px;
+    }
+
+    .tt-time-label {
+        font-size: 9px;
+    }
+
+    .tt-grid {
+        grid-template-columns: 48px repeat(5, 1fr);
+        min-width: 500px;
+    }
+
+    .tt-blocks-layer {
+        left: 48px;
+    }
+
+    .tt-grid-card {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tt-toolbar-left,
+    .tt-toolbar-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tt-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
