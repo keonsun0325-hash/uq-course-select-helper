@@ -42,6 +42,8 @@ body {
     align-items: center;
     padding: 20px 0;
     flex-shrink: 0;
+    position: relative;
+    z-index: 20;
 }
 
 .nav-brand {
@@ -49,6 +51,7 @@ body {
     align-items: center;
     gap: 16px;
     color: #fff;
+    min-width: 0;
 }
 
 .brand-lockup {
@@ -111,6 +114,7 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+    min-height: 38px;
 }
 
 .nav-links a:hover {
@@ -150,6 +154,12 @@ body {
 
 .nav-menu-btn:hover {
     background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-menu-btn.active {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #fff;
 }
 
 /* Language Globe Button */
@@ -496,11 +506,36 @@ body {
     .footer-proof-points {
         justify-content: flex-start;
     }
+
+    .bottom-bar {
+        width: calc(100% + 56px);
+        margin: 0 -28px;
+        padding: 16px 28px;
+    }
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        padding: 16px 0;
+    }
+
     .nav-links {
         display: none;
+    }
+
+    .nav-right {
+        gap: 8px;
+        justify-self: end;
+    }
+
+    .nav-menu-btn,
+    .lang-globe-btn,
+    .nav-cta {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
     }
 
     .footer {
@@ -516,12 +551,53 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .footer-hero {
+        gap: 24px;
+        padding-bottom: 28px;
+    }
+
+    .footer-brand-block {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .footer-brand-block p {
+        font-size: 14px;
+    }
+
     .brand-lockup img {
-        width: 210px;
+        width: min(210px, 48vw);
     }
 
     .prototype-notice {
         margin-bottom: 16px;
+        padding: 11px 13px;
+        font-size: 12px;
+        border-radius: 12px;
+    }
+
+    .bottom-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        width: calc(100% + 40px);
+        margin: 0 -20px;
+        padding: 18px 20px;
+    }
+
+    .bottom-left,
+    .bottom-right {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .bottom-right {
+        justify-content: space-between;
+    }
+
+    .bottom-proof-item {
+        white-space: normal;
     }
 }
 
@@ -529,15 +605,30 @@ body {
     .nav-links {
         display: none;
         position: absolute;
-        top: 80px;
-        right: 24px;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        width: 100%;
+        justify-self: stretch;
         background: rgba(22, 7, 18, 0.96);
-        padding: 18px;
-        border-radius: 18px;
+        padding: 10px;
+        border-radius: 16px;
         flex-direction: column;
-        gap: 12px;
+        align-items: stretch;
+        gap: 4px;
         z-index: 1000;
+        border: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+    }
+
+    .nav-links a {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 12px 14px;
+        border-radius: 12px;
+        min-height: 44px;
     }
 
     .nav-links.nav-open {
@@ -545,3 +636,40 @@ body {
     }
 }
 
+@media (max-width: 480px) {
+    .brand-lockup img {
+        width: min(170px, 44vw);
+    }
+
+    .nav-right {
+        gap: 6px;
+    }
+
+    .lang-popover {
+        right: -42px;
+        min-width: min(220px, calc(100vw - 28px));
+    }
+
+    .footer {
+        padding: 34px 16px 0;
+    }
+
+    .footer-brand-logo {
+        width: 220px;
+    }
+
+    .footer-columns {
+        gap: 18px;
+        padding-bottom: 34px;
+    }
+
+    .footer-disclaimer {
+        padding-bottom: 22px;
+    }
+
+    .bottom-bar {
+        width: calc(100% + 32px);
+        margin: 0 -16px;
+        padding: 16px;
+    }
+}

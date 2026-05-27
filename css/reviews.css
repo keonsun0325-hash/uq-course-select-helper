@@ -33,7 +33,7 @@
 .reviews-title {
     font-size: clamp(36px, 5vw, 56px);
     font-weight: 800;
-    letter-spacing: -1.5px;
+    letter-spacing: 0;
     color: #fff;
     margin-bottom: 12px;
 }
@@ -229,6 +229,7 @@
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     animation: fadeInUp 0.3s ease both;
+    max-width: 100%;
 }
 
 .badge-code {
@@ -416,7 +417,7 @@
     font-weight: 800;
     color: #1a1a2e;
     line-height: 1;
-    letter-spacing: -2px;
+    letter-spacing: 0;
 }
 
 .summary-stars {
@@ -869,6 +870,7 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     transition: all 0.3s;
     animation: fadeInUp 0.4s ease both;
+    min-width: 0;
 }
 
 .review-card:hover {
@@ -1120,11 +1122,50 @@
     }
 
     .reviews-header {
-        padding: 32px 0 24px;
+        padding: 28px 0 22px;
     }
 
     .reviews-title {
         font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: 0;
+    }
+
+    .reviews-subtitle {
+        font-size: 14px;
+    }
+
+    .course-selector {
+        border-radius: 22px;
+        padding: 6px 14px;
+    }
+
+    .course-selector:focus-within {
+        border-radius: 18px 18px 4px 4px;
+    }
+
+    .course-dropdown-item {
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 14px;
+    }
+
+    .course-dropdown-item .dd-code {
+        min-width: 76px;
+    }
+
+    .selected-course-badge {
+        align-items: flex-start;
+        border-radius: 16px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .badge-title {
+        flex: 1;
+        max-width: none;
+        min-width: 0;
     }
 
     .reviews-toolbar {
@@ -1136,6 +1177,11 @@
     .all-course-picker-head {
         align-items: stretch;
         flex-direction: column;
+    }
+
+    .all-course-picker {
+        border-radius: 18px;
+        padding: 14px;
     }
 
     .all-course-picker .filter-select {
@@ -1159,10 +1205,17 @@
 
     .sort-group {
         justify-content: space-between;
+        width: 100%;
+    }
+
+    .sort-group .filter-select {
+        min-width: 0;
+        width: 60%;
     }
 
     .write-review-toggle {
         justify-content: center;
+        width: 100%;
     }
 
     .form-row-inline {
@@ -1171,6 +1224,7 @@
     }
 
     .review-form {
+        border-radius: 18px;
         padding: 24px;
     }
 
@@ -1195,19 +1249,52 @@
         flex-direction: column;
         gap: 16px;
     }
+
+    .review-summary-card {
+        border-radius: 18px;
+        padding: 24px 20px;
+    }
+
+    .summary-left {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        text-align: left;
+    }
 }
 
 @media (max-width: 480px) {
+    .review-evidence-card {
+        border-radius: 16px;
+        padding: 16px;
+    }
+
+    .course-selector-icon {
+        display: none;
+    }
+
+    .course-dropdown-item {
+        flex-direction: column;
+    }
+
+    .course-dropdown-item .dd-title {
+        width: 100%;
+    }
+
     .course-selector input {
         font-size: 14px;
     }
 
     .badge-title {
-        max-width: 140px;
+        max-width: none;
     }
 
     .star-pick {
         font-size: 28px;
+    }
+
+    .star-picker {
+        justify-content: space-between;
     }
 
     .form-actions {
@@ -1219,5 +1306,13 @@
         width: 100%;
         text-align: center;
     }
-}
 
+    .sort-group {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .sort-group .filter-select {
+        width: 100%;
+    }
+}

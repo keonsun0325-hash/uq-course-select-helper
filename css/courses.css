@@ -33,7 +33,7 @@
 .catalog-title {
     font-size: clamp(36px, 5vw, 56px);
     font-weight: 800;
-    letter-spacing: -1.5px;
+    letter-spacing: 0;
     color: #fff;
     margin-bottom: 12px;
 }
@@ -50,6 +50,7 @@
 .catalog-search-wrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
     margin-bottom: 24px;
     animation: fadeInUp 0.6s ease both 0.35s;
 }
@@ -204,7 +205,7 @@
 /* ===== Course Grid ===== */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
     animation: fadeInUp 0.6s ease both 0.55s;
 }
@@ -222,6 +223,7 @@
     gap: 12px;
     position: relative;
     overflow: hidden;
+    min-width: 0;
 }
 
 .course-card::before {
@@ -249,7 +251,7 @@
     font-size: 20px;
     font-weight: 800;
     color: var(--brand-ink);
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
 }
 
 .course-card-title {
@@ -400,28 +402,60 @@
     }
 
     .catalog-header {
-        padding: 32px 0 24px;
+        padding: 28px 0 22px;
     }
 
     .catalog-title {
         font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: 0;
+    }
+
+    .catalog-subtitle {
+        font-size: 14px;
     }
 
     .catalog-filters {
         gap: 8px;
+        justify-content: stretch;
     }
 
     .filter-select {
         font-size: 12px;
+        min-height: 40px;
         padding: 8px 30px 8px 12px;
     }
 
     .catalog-search-bar {
-        padding: 4px 4px 4px 16px;
+        border-radius: 22px;
+        gap: 8px;
+        padding: 7px;
+        padding-left: 14px;
     }
 
     .catalog-search-bar input {
         font-size: 14px;
+        min-height: 36px;
+    }
+
+    .catalog-search-btn {
+        min-height: 38px;
+        padding: 8px 16px;
+    }
+
+    .course-card {
+        border-radius: 16px;
+        padding: 22px 20px;
+    }
+
+    .course-card-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .course-card-link,
+    .course-card-official {
+        white-space: normal;
     }
 }
 
@@ -434,5 +468,16 @@
     .filter-select {
         width: 100%;
     }
-}
 
+    .catalog-search-icon {
+        display: none;
+    }
+
+    .catalog-search-bar {
+        padding-left: 12px;
+    }
+
+    .catalog-search-btn {
+        padding: 8px 13px;
+    }
+}

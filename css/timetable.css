@@ -57,7 +57,7 @@
     font-size: 24px;
     font-weight: 800;
     color: #fff;
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
 }
 
 .tt-semester-select-wrapper {
@@ -167,6 +167,7 @@
 .tt-grid-panel {
     min-width: 0;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ===== Grid Card ===== */
@@ -177,6 +178,7 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
+    min-width: 600px;
 }
 
 /* ===== Weekly Grid ===== */
@@ -666,8 +668,14 @@
     }
 
     .tt-toolbar {
-        padding: 16px 20px;
+        border-radius: 16px;
+        padding: 16px;
         margin: 16px 0 20px;
+    }
+
+    .tt-toolbar-left,
+    .tt-toolbar-right {
+        gap: 10px;
     }
 
     .tt-title {
@@ -680,7 +688,7 @@
 
     .tt-grid {
         grid-template-columns: 48px repeat(5, 1fr);
-        min-width: 500px;
+        min-width: 520px;
     }
 
     .tt-blocks-layer {
@@ -689,6 +697,28 @@
 
     .tt-grid-card {
         border-radius: 14px;
+        min-width: 520px;
+    }
+
+    .tt-bank-card {
+        border-radius: 16px;
+        padding: 18px;
+    }
+
+    .tt-bank-item {
+        padding: 12px 13px;
+    }
+
+    .tt-toast {
+        left: 20px;
+        right: 20px;
+        text-align: center;
+        white-space: normal;
+        transform: translateY(80px);
+    }
+
+    .tt-toast.show {
+        transform: translateY(0);
     }
 }
 
@@ -696,12 +726,37 @@
     .tt-toolbar-left,
     .tt-toolbar-right {
         width: 100%;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: flex-start;
     }
 
     .tt-toolbar {
         flex-direction: column;
         align-items: stretch;
     }
-}
 
+    .tt-semester-select-wrapper,
+    .tt-semester-select,
+    .tt-units-badge,
+    .tt-btn {
+        width: 100%;
+    }
+
+    .tt-units-badge,
+    .tt-btn {
+        justify-content: center;
+    }
+
+    .tt-grid-panel {
+        margin: 0 -20px;
+        padding: 0 20px 8px;
+    }
+
+    .tt-bank-item {
+        align-items: flex-start;
+    }
+
+    .tt-bank-item-units {
+        margin-top: 1px;
+    }
+}
