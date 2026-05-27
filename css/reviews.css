@@ -12,7 +12,7 @@
 .page-reviews .content {
     position: relative;
     z-index: 1;
-    padding: 0 48px 64px;
+    padding: 0 64px 72px;
     display: flex;
     flex-direction: column;
 }
@@ -26,12 +26,12 @@
 /* ===== Page Header ===== */
 .reviews-header {
     text-align: center;
-    padding: 48px 0 32px;
+    padding: 58px 0 34px;
     animation: fadeInUp 0.6s ease both 0.2s;
 }
 
 .reviews-title {
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: 60px;
     font-weight: 800;
     letter-spacing: 0;
     color: #fff;
@@ -39,25 +39,25 @@
 }
 
 .reviews-subtitle {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.55);
-    max-width: 540px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
 .review-evidence-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    max-width: 920px;
+    gap: 18px;
+    max-width: 1120px;
     width: 100%;
     margin: 0 auto 28px;
     animation: fadeInUp 0.6s ease both 0.28s;
 }
 
 .review-evidence-card {
-    padding: 18px 20px;
+    padding: 24px 26px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -73,19 +73,19 @@
 .review-evidence-card strong {
     margin: 6px 0 4px;
     color: #fff;
-    font-size: 23px;
+    font-size: 28px;
     line-height: 1.1;
 }
 
 .review-evidence-card span:last-child {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.45;
 }
 
 .evidence-label {
     color: var(--accent);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.9px;
     text-transform: uppercase;
@@ -96,18 +96,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
+    gap: 18px;
+    margin-bottom: 42px;
     animation: fadeInUp 0.6s ease both 0.35s;
 }
 
 .course-selector {
     position: relative;
     width: 100%;
-    max-width: 580px;
+    max-width: 760px;
     display: flex;
     align-items: center;
-    padding: 6px 20px;
+    padding: 8px 24px;
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(24px);
@@ -135,10 +135,10 @@
     background: none;
     border: none;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
     font-family: inherit;
     color: #fff;
-    padding: 10px 0;
+    padding: 12px 0;
     min-width: 0;
 }
 
@@ -270,8 +270,8 @@
 }
 
 .all-course-picker {
-    width: min(100%, 1080px);
-    padding: 18px;
+    width: min(100%, 1280px);
+    padding: 24px;
     border-radius: 24px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -284,7 +284,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
 .all-course-picker-head span,
@@ -303,20 +303,20 @@
 .all-course-picker-head strong {
     margin-top: 4px;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .all-course-picker .filter-select {
     appearance: none;
     -webkit-appearance: none;
-    min-width: 240px;
-    padding: 9px 34px 9px 14px;
+    min-width: 300px;
+    padding: 11px 38px 11px 16px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.86);
     border: 1px solid rgba(255, 255, 255, 0.16);
     font: inherit;
-    font-size: 13px;
+    font-size: 14px;
     outline: none;
 }
 
@@ -328,8 +328,8 @@
 .all-course-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    max-height: 360px;
+    gap: 14px;
+    max-height: 460px;
     overflow-y: auto;
     padding-right: 4px;
     scrollbar-width: thin;
@@ -341,10 +341,10 @@
     grid-template-areas:
         "code title"
         "meta meta";
-    gap: 4px 10px;
+    gap: 6px 12px;
     align-items: center;
-    min-height: 72px;
-    padding: 12px 14px;
+    min-height: 88px;
+    padding: 16px 18px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(5, 3, 5, 0.22);
@@ -365,7 +365,7 @@
 .all-course-code {
     grid-area: code;
     color: var(--accent);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 850;
 }
 
@@ -376,14 +376,14 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 650;
 }
 
 .all-course-meta {
     grid-area: meta;
     color: rgba(255, 255, 255, 0.55);
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .all-course-empty {
@@ -399,10 +399,11 @@
     grid-template-columns: auto 1fr auto;
     gap: 40px;
     align-items: center;
+    width: min(100%, 1280px);
     background: #fff;
     border-radius: 24px;
     padding: 36px 40px;
-    margin-bottom: 28px;
+    margin: 0 auto 28px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
     animation: fadeInUp 0.5s ease both;
 }
@@ -559,7 +560,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    margin-bottom: 20px;
+    width: min(100%, 1280px);
+    margin: 0 auto 20px;
     animation: fadeInUp 0.4s ease both;
     flex-wrap: wrap;
 }
@@ -652,17 +654,18 @@
 
 /* ===== Review Form ===== */
 .review-form-wrapper {
+    width: min(100%, 1280px);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.2, 0.6, 0.35, 1), opacity 0.3s ease;
     opacity: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 .review-form-wrapper.open {
     max-height: 800px;
     opacity: 1;
-    margin-bottom: 28px;
+    margin: 0 auto 28px;
 }
 
 .review-form {
@@ -860,6 +863,8 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: min(100%, 1280px);
+    margin: 0 auto;
     animation: fadeInUp 0.5s ease both;
 }
 
