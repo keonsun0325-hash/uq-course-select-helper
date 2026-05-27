@@ -447,6 +447,26 @@
             });
         });
 
+        // Mobile navigation toggle for the home page.
+        const menuBtn = document.querySelector('.nav-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuBtn && navLinks) {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('nav-open');
+                menuBtn.classList.toggle('active', isOpen);
+                menuBtn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('nav-open');
+                    menuBtn.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
         // ===== Placeholder Rotation =====
         const input = document.getElementById('searchInput');
         let hintIndex = 0;
